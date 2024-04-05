@@ -29,10 +29,10 @@ public class _03_FindTheHiddenButton implements ActionListener{
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // 3. Ask the user to enter a positive number and convert it to an int
-
+   String ing =     JOptionPane.showInputDialog(null, "would thou do the the pleasure of stating a number under the definition of being posisitive, would indeed be a good morrow for this to be done!");
         // 4. Initialize the array of JButtons to be the size of the int
         //    created in step 3
-
+int inti = Integer.parseInt(ing);
         // 5. Make a for loop to iterate through the JButton array
         
             // 6. initialize each JButton in the array
