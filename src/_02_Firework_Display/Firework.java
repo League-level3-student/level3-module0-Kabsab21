@@ -20,21 +20,25 @@ public class Firework{
 
     public Firework() {
         // 2. Initialize the Spark array to contain 100 Sparks. 
-    	Spark[] sparks = new    Spark[100];
+    	sparks = new Spark[100];
 
         // 3. Iterate through the sparks and initialize each one to a new Spark.
         //    Make each spark start at the middle bottom of the screen.
-for(int i = 0; i < sparks.length; i++) {
-	sparks[i] = new Spark(300, 600);
-}
+		for(int i = 0; i < sparks.length; i++) {
+			sparks[i] = new Spark(300, 600);
+		}
+	
 
     }
 
     public void launch() {
         // 4. Iterate through the sparks and reset their x and y location
         //    to their original starting point.
+    	Random r = new Random();
+    	int newX = r.nextInt(FireworkDisplay.WIDTH);
     	for(int i = 0; i < sparks.length; i++) {
-    		sparks[i].x = 300;
+    		System.out.println(i);
+    		sparks[i].x = newX;
     		sparks[i].y = 600;
     	}
     }
@@ -73,8 +77,16 @@ for(int i = 0; i < sparks.length; i++) {
 
     public void drawSparks(Graphics g) {
         // 5. Iterate through each spark
+    	Random r = new Random();
+    	int newColor = r.nextInt(3);
     	for(int i = 0; i < sparks.length; i++) {
-    		g.setColor(Color.red);
+    		if( newColor == 0) {
+    			g.setColor(Color.orange);
+    		} else if( newColor == 1) {
+    			g.setColor(Color.CYAN);
+    		} else if( newColor == 2) {
+    			g.setColor(Color.MAGENTA);
+    		} 
     		g.fillOval(sparks[i].x, sparks[i].y, 10, 10);
         // 6. Set the color to the spark's color with g.setColor()
         // 7. Fill in an oval using the spark's x, y, and size with g.fillOval()

@@ -31,8 +31,20 @@ public class _02_2DArrayPractice {
      *          6, 7, 8
      */
     public Integer[][] test1() {
-        
-        return null;
+        Integer[][] arr2gr = new Integer[3][3];
+        for( int i = 0; i < arr2gr.length; i++) {
+        	for( int j = 0; j < arr2gr[i].length; j++) {
+        		if( i > 1) {
+        			arr2gr[i][j] = j + i + 4;
+        		} else if( i >  0) {
+        			arr2gr[i][j] = j + i + 2;
+        		} else {
+        			arr2gr[i][j] = j + i;
+        		}
+        	
+        	}
+        }
+        return arr2gr;
     }
     
     /*
