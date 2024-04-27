@@ -36,10 +36,13 @@ public class _02_2DArrayPractice {
         	for( int j = 0; j < arr2gr[i].length; j++) {
         		if( i > 1) {
         			arr2gr[i][j] = j + i + 4;
+        		
         		} else if( i >  0) {
         			arr2gr[i][j] = j + i + 2;
+        			
         		} else {
         			arr2gr[i][j] = j + i;
+        			
         		}
         	
         	}
@@ -53,8 +56,9 @@ public class _02_2DArrayPractice {
      *          "e", "f", "g", "e"
      */
     public String[][] test2() {
+    	  String[][] arr2gr = {  {"a","b", "c", "d"}, {"e","f", "g", "e"} };
         
-        return null;
+        return arr2gr;
     }
     
     /*
@@ -66,8 +70,9 @@ public class _02_2DArrayPractice {
      *          true, false
      */
     public Boolean[][] test3() {
+    	 Boolean[][] arr2gr = { { true, false }, { false, false }, { false, true }, { true, true }, { true, false } };
         
-        return null;
+        return arr2gr;
     }
     
     /*
@@ -99,7 +104,7 @@ public class _02_2DArrayPractice {
     public Object test4() {
         Object[][] objects = { {null, null, null, null}, {null, null, null, new Object()} };
         
-        return null;
+        return objects[1][3];
     }
     
     /* Given the array of Objects below, return the element that is not null
@@ -109,7 +114,7 @@ public class _02_2DArrayPractice {
     public Object test5() {
         Object[][] objects = { {null, null, new Object(), null}, {null, null, null, null} };
         
-        return null;
+        return  objects[0][2];
     }
     
     /*
@@ -118,8 +123,11 @@ public class _02_2DArrayPractice {
      */
     public Integer test6() {
         int[][] nums = { {8, 7, 6, 5}, {4, 3}, {2, 1, 0} };
-        
-        return null;
+        int en = 0;
+        for( int i = 0; i < nums[0].length; i++) {
+        	en = en + nums[0][i];
+        }
+        return en;
     }
     
     /*
@@ -129,7 +137,16 @@ public class _02_2DArrayPractice {
     public Integer test7() {
         int[][] nums = { {8, 7, 6, 5}, {4, 3}, {2, 1, 0} };
         
-        return null;
+        int en = 0;
+        for( int i = 0; i < nums.length; i++) {
+        	 for( int j = 0; j < nums[i].length; j++) {
+        		 if( j == 0) {
+        			 	en = en + nums[i][j];
+        		 }
+             
+             }
+        }
+        return en;
     }
     
     /*
@@ -137,17 +154,28 @@ public class _02_2DArrayPractice {
      * specified row
      */
     public Integer getSumByRow(int[][] matrix, int row) {
-        
-        return null;
+    	 int en = 0;
+         for( int i = 0; i < matrix[row].length; i++) {
+         	en = en + matrix[row][i];
+         }
+         return en;
     }
     
     /*
      * Write an algorithm to return the sum of all the numbers in the
      * specified column
      */
-    public Integer getSumByColumn(int[][] matrix, int col) {
-        
-        return null;
+    public Integer getSumByColumn(int[][] matrix, int col) {  
+    	  int en = 0;
+          for( int i = 0; i < matrix.length; i++) {
+          	 for( int j = 0; j < matrix[i].length; j++) {
+          		 if( j == col) {
+          			 	en = en + matrix[i][j];
+          		 }
+               
+               }
+          }
+          return en;
     }
     
     /*
@@ -169,23 +197,41 @@ public class _02_2DArrayPractice {
      * 2. If the neighbor does not exist, i.e. it's outside the grid
      *    boundaries, return null.
      */
+    
     public Integer getEastNeighbor(int[][] matrix, int row, int col) {
-        
-        return null;
+    	if (col + 1 <= matrix.length - 1) {
+    		System.out.println(""+matrix[row ][col + 1 ]);
+        	return matrix[row ][col + 1 ];
+        }else {
+        	  return null;
+        }
     }
     
     public Integer getWestNeighbor(int[][] matrix, int row, int col) {
-        
-        return null;
+       if (col - 1 >= 0 ) {
+        	return matrix[row ][col - 1 ];
+        }else {
+        	  return null;
+        }
+     
     }
     
     public Integer getNorthNeighbor(int[][] matrix, int row, int col) {
-        
-        return null;
+    	System.out.println();
+    	if( row - 1 >= 0 ) {
+    		return matrix[row -1][col];
+    	}else {
+    		return null;
+    	}
+       
     }
     
     public Integer getSouthNeighbor(int[][] matrix, int row, int col) {
-        
-        return null;
+        if (row + 1 <= matrix[row].length - 1)             {
+        	return matrix[row +1 ][col ];
+        }else {
+        	  return null;
+        }
+      
     }
 }
