@@ -28,16 +28,17 @@ Cell[][] cells;
         this.cellsPerRow = cpr;
 
         // 2. Calculate the cell size.
-        cellSize = w  / cpr;
-        System.out.print(cellSize);
+        cellSize = h  / cellsPerRow;
+
+        //System.out.print(cellSize);
         // 3a. Initialize the cell array to the appropriate size.
-        cells = new Cell[cellSize][cpr];
+        cells = new Cell[cellsPerRow][cellsPerRow];
         // 3b. Iterate through the array and initialize each cell.
         //    Don't forget to consider the cell's dimensions when 
         //    passing in the location.
         for(int i = 0; i < cells.length; i++) {
         	for( int j = 0; j < cells[i].length; j++) {
-        		cells[i][j] = new Cell(w, h, cellSize);
+        		cells[i][j] = new Cell(j * cellSize, i * cellSize, cellSize);
         	}
         }
     }
