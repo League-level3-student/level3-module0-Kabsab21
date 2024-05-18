@@ -49,6 +49,8 @@
 package _07_The_Wrong_Way_Cow;
 
 public class TheWrongWayCow {
+	
+	//void findCow(int )
 
     public static int[] findWrongWayCow(final char[][] field) {
         // Fill in the code to return the [col, row] coordinate position of the
@@ -56,24 +58,38 @@ public class TheWrongWayCow {
     	int[] wahat = new int[2];
         for( int i = 0; i < field.length; i++) {
         	for( int j = 0; j < field[i].length; j++) {
-        		if( field[i][j] == 'c' ) {
-        			if( field[i][j+1] != 'o' ) {
-        				if( field[i][j+2] != 'w' ) {
+        		if( j+1 >= field[i].length) {
         			wahat[1] = i;
         			wahat[0] = j;
+        			  System.out.println(wahat[0]+" "+wahat[1]);
+        			  return wahat;	
         			
-        		break;
-        				}
+        		} else if( field[i][j] == 'c' ) {
+        			if( field[i][j+1] != 'o' || field[i+1][j+1] != 'o') {
+        				if( field[i][j+2] != 'w' || field[i+2][j+2] != 'w' ) {
+        			wahat[1] = i;
+        			wahat[0] = j;
+        			  System.out.println(wahat[0]+" "+wahat[1]);
+        			  return wahat;	
+        			
+        						}
+        				
+        					} 
+  	
+                		}
+		
         			}
-        			
-     
-        			
-        					}
-        	}
-        }
-		  System.out.println(wahat[0]+" "+wahat[1]);
-          return wahat;
-    }
+        		
+        		}
+        return wahat;  
+        
+    		}
+    
 }
+
+
+
+
+    
 
 
