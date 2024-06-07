@@ -49,227 +49,228 @@
 package _07_The_Wrong_Way_Cow;
 
 public class TheWrongWayCow {
-	
-	//void findCow(int )
+	static int[] coord = new int[2];
+	// void findCow(int )
 
-    public static int[] findWrongWayCow(final char[][] field) {
-        // Fill in the code to return the [col, row] coordinate position of the
-        // head (letter 'c') of the wrong way cow!
-    	int[] wahat = new int[2];
-//    	ifV(field);
-//    	ifH(field);
-//    	ifS(field);
-//    	ifF(field, ifH(field), ifV(field));
-//    	ifB(field, ifH(field), ifV(field));
-//    	
-        for( int i = 0; i < field.length; i++) {
-        	for( int j = 0; j < field[i].length; j++) {
-        		if( j+1 >= field[i].length) {
-        			wahat[1] = i;
-        			wahat[0] = j;
-        			  System.out.println(wahat[0]+" "+wahat[1]);
-        			  return wahat;	
-        			
-        		} else if( field[i][j] == 'c' ) {
-        			if( field[i][j+1] != 'o' || field[i+1][j+1] != 'o') {
-        				if( field[i][j+2] != 'w' || field[i+2][j+2] != 'w' ) {
-        			wahat[1] = i;
-        			wahat[0] = j;
-        			  System.out.println(wahat[0]+" "+wahat[1]);
-        			  return wahat;	
-        			 
-        						}
-        				
-        					} 
-  	
-                		}
-		
-        			}
-        		
-        		}
-        return wahat;  
-        
-    		}
-    
-  public static Boolean ifV(final char[][] field) { 
-	  Boolean isVerticle = false;
-    	int PatternReq = 0;
-    	   for( int i = 0; i < field.length; i++) {
-    		   
-           	for( int j = 0; j < field[i].length; j++) {
-           		
-           		if( field[i][j] == 'c' ) {
-           			
-           			if( field[i+1][j] == 'o') {
-           				
-           				if( field[i+2][j] == 'w' ) {
-	    
-           					PatternReq++;
-           				
-           					}
-           				}
-    				}
-           		}
+	public static int[] findWrongWayCow(final char[][] field) {
+		// Fill in the code to return the [col, row] coordinate position of the
+		// head (letter 'c') of the wrong way cow!
+		// int[] wahat = new int[2];
+		ifVF(field);
+		ifVB(field);
+		ifHF(field);
+		ifHB(field);
+		/// ifS(field);
+		System.out.println(" VF:" + ifVF(field) + "VB:" + ifVB(field) + "HF:" + ifHF(field) + "HB:" + ifHB(field));
+		System.out.println("COORDINATE HERE");
+		System.out.println(coord[0] + " " + coord[1]);
 
-    	   }
-    if( PatternReq >= 2) {
-    	isVerticle = true;
-    }
-    	   
-    	return isVerticle;   
-    }
-   
-  public static Boolean ifH(final char[][] field) { 
-	  Boolean isHorozontal = false;
-    	int PatternReq = 0;
-    	   for( int i = 0; i < field.length; i++) {
-    		   
-           	for( int j = 0; j < field[i].length; j++) {
-           		
-           		if( field[i][j] == 'c' ) {
-           			
-           			if( field[i][j+1] == 'o') {
-           				
-           				if( field[i][j+2] == 'w' ) {
-	    
-           					PatternReq++;
-           				
-           					}
-           				}
-    				}
-           		}
+//        for( int i = 0; i < field.length; i++) {
+//        	for( int j = 0; j < field[i].length; j++) {
+//        		if( j+1 >= field[i].length) {
+//        			wahat[1] = i;
+//        			wahat[0] = j;
+//        			  System.out.println(wahat[0]+" "+wahat[1]);
+//        			  return wahat;	
+//        			
+//        		} else if( field[i][j] == 'c' ) {
+//        			if( field[i][j+1] != 'o' || field[i+1][j+1] != 'o') {
+//        				if( field[i][j+2] != 'w' || field[i+2][j+2] != 'w' ) {
+//        			wahat[1] = i;
+//        			wahat[0] = j;
+//        			  System.out.println(wahat[0]+" "+wahat[1]);
+//        			  return wahat;	
+//        			 
+//        						}
+//        				
+//        					} 
+//  	
+//                		}
+//	
+//        			}
+//        		
+//        		}
+//        return wahat;  
+		return coord;
+	}
 
-    	   }
-    if( PatternReq >= 2) {
-    	isHorozontal = true;
-    }
-    	   
-    	return isHorozontal;   
-    }
-   
-  public static Boolean ifB(final char[][] field, Boolean isHorozontal, Boolean isVerticle) { 
-	  Boolean isBackward = false;
-    	int PatternReq = 0;
-    	   for( int i = 0; i < field.length; i++) {
-    		   
-           	for( int j = 0; j < field[i].length; j++) {
-           		
-           	if( isHorozontal == true) {
-           		if( field[i][j] == 'w' ) {
-           			
-           			if( field[i][j+1] == 'o') {
-           				
-           				if( field[i][j+2] == 'c' ) {
-	    
-           					PatternReq++;
-           				
-           					}
-           				}
-    				}
-           	}else if( isVerticle == true) {
-           		if( field[i][j] == 'w' ) {
-           			
-           			if( field[i+1][j] == 'o') {
-           				
-           				if( field[i+2][j] == 'c' ) {
-	    
-           					PatternReq++;
-           				
-           					}
-           				}
-    				}
-           		}
-           		
+	public static Boolean ifVF(final char[][] field) {
+		Boolean isVerticle = false;
+		int[] coo = new int[2];
+		int PatternReq = 0;
 
-    	   }
-    if( PatternReq >= 2) {
-    	isBackward = true;
-    }
-    	   }
-    	   
-    	return isBackward;   
-    	   }
-  
-  public static Boolean ifF(final char[][] field, Boolean isHorozontal, Boolean isVerticle) { 
-	  Boolean isForward = false;
-    	int PatternReq = 0;
-    	   for( int i = 0; i < field.length; i++) {
-    		   
-           	for( int j = 0; j < field[i].length; j++) {
-           		
-           	if( isHorozontal == true) {
-           		if( field[i][j] == 'c' ) {
-           			
-           			if( field[i][j+1] == 'o') {
-           				
-           				if( field[i][j+2] == 'w' ) {
-	    
-           					PatternReq++;
-           				
-           					}
-           				}
-    				}
-           	}else if( isVerticle == true) {
-           		if( field[i][j] == 'c' ) {
-           			
-           			if( field[i+1][j] == 'o') {
-           				
-           				if( field[i+2][j] == 'w' ) {
-	    
-           					PatternReq++;
-           				
-           					}
-           				}
-    				}
-           		}
-           		
+		for (int i = 0; i < field.length; i++) {
 
-    	   }
-    if( PatternReq >= 2) {
-    	isForward = true;
-    }
-    	   }
-    	   
-    	return isForward;   
-    	   }
-  
-  public static Boolean ifS(final char[][] field) { 
-	  Boolean isSame = false;
-    	int PatternReq = 0;
-    	   for( int i = 0; i < field.length; i++) {
-    		   
-           	for( int j = 0; j < field[i].length; j++) {
-           		
-           		if( field[i][j] == field[i][j+1] ) {
-           			
-           			if( field[i+1][j] == field[i][j+2]) {
-           				
-           				if( field[i+2][j] == field[i][j+3] ) {
-	    
-           					PatternReq++;
-           				
-           					}
-           				}
-    				}
-           		}
+			for (int j = 0; j < field[i].length; j++) {
 
-    	   }
-    if( PatternReq >= 2) {
-    	isSame = true;
-    }
-    	   
-    	return isSame;   
-    }
-   
-    	   
-    	   
-	
-  	
+				if (field[i][j] == 'c') {
+
+					if (i + 2 >= field.length) {
+						coo[1] = i;
+						coo[0] = j;
+					} else if (field[i + 1][j] == 'o') {
+
+						if (field[i + 2][j] == 'w') {
+
+							PatternReq++;
+
+						}
+					} else {
+						coo[1] = i;
+						coo[0] = j;
+					}
+				}
+			}
+
+		}
+		if (PatternReq >= 2) {
+			isVerticle = true;
+			coord = coo;
+		}
+
+		return isVerticle;
+	}
+
+	public static Boolean ifVB(final char[][] field) {
+		Boolean isVerticle = false;
+		int PatternReq = 0;
+		int[] coo = new int[2];
+		for (int i = 0; i < field.length; i++) {
+
+			for (int j = 0; j < field[i].length; j++) {
+
+				if (field[i][j] == 'c') {
+
+					if (i -2 <= 0) {
+						coo[1] = i;
+						coo[0] = j;
+					} else if (field[i - 1][j] == 'o') {
+
+						if (field[i - 2][j] == 'w') {
+
+							PatternReq++;
+
+						}
+					} else {
+						coo[1] = i;
+						coo[0] = j;
+					}
+				}
+			}
+
+		}
+		if (PatternReq >= 2) {
+			isVerticle = true;
+			coord = coo;
+		}
+
+		return isVerticle;
+	}
+
+	public static Boolean ifHF(final char[][] field) {
+		Boolean isHorozontal = false;
+		int PatternReq = 0;
+		int[] coo = new int[2];
+		for (int i = 0; i < field.length; i++) {
+
+			for (int j = 0; j < field[i].length; j++) {
+
+				if (field[i][j] == 'c') {
+
+					if (j + 1 >= field[i].length) {
+						coo[1] = i;
+						coo[0] = j;
+					} else if (field[i][j + 1] == 'o') {
+
+						if (field[i][j + 2] == 'w') {
+
+							PatternReq++;
+
+						}
+					} else {
+						coo[1] = i;
+						coo[0] = j;
+					}
+				}
+			}
+
+		}
+		if (PatternReq >= 2) {
+			isHorozontal = true;
+			coord = coo;
+		}
+
+		return isHorozontal;
+	}
+
+	public static Boolean ifHB(final char[][] field) {
+		Boolean isHorozontal = false;
+		int PatternReq = 0;
+		int[] coo = new int[2];
+		for (int i = 0; i < field.length; i++) {
+
+			for (int j = 2; j < field[i].length; j++) {
+
+				if (field[i][j] == 'c') {
+
+//           			if( j+1 >= field[i].length) {
+//                   		coo[1] = i;
+//                   		coo[0] = j;
+//                   		}	else 
+					if (field[i][j - 1] == 'o') {
+
+						if (field[i][j - 2] == 'w') {
+
+							PatternReq++;
+
+						}
+					} else {
+						coo[1] = i;
+						coo[0] = j;
+					}
+				}
+			}
+
+		}
+		if (PatternReq >= 2) {
+			isHorozontal = true;
+			coord = coo;
+		}
+
+		return isHorozontal;
+	}
+
+	public static Boolean ifS(final char[][] field) {
+		Boolean isSame = false;
+		int PatternReq = 0;
+		int[] coo = new int[2];
+		for (int i = 0; i < field.length; i++) {
+
+			for (int j = 0; j < field[i].length - 2; j++) {
+
+				if (field[i][j] == 'c') {
+
+					if (field[i][j + 1] == field[i][j + 2]) {
+
+						if (field[i][j + 1] == field[i][j + 2]) {
+
+							PatternReq++;
+
+						}
+					} else {
+						coo[1] = i;
+						coo[0] = j;
+					}
+				}
+			}
+
+		}
+		if (PatternReq >= 2) {
+			isSame = true;
+			coord = coo;
+		}
+
+		return isSame;
+	}
+
 }
-
-
-
-
-    
-
-
